@@ -11,7 +11,7 @@ const should = require('should');
 const chorme = require('selenium-webdriver/chrome');
 
 // Application Server
-const serverUri = "http://172.25.0.5:3000"
+const serverUri = "http://172.25.0.3:3000"
 const appTitle = "Client shopper"
 
 const options = new chorme.Options()
@@ -70,7 +70,7 @@ describe("Home Page", function() {
 		const articleBtn = await firstArticle.findElement(cssLocator('button'))
 		await articleBtn.click()
 
-		await browser.sleep(1000)
+		await browser.wait(webdriver.until.elementLocated(cssLocator('div.total>div'), 2000))
 
 		const total = await browser.findElement(cssLocator('div.total>div'))
 
@@ -90,13 +90,15 @@ describe("Home Page", function() {
 		const proceedBtn = await total.findElement(cssLocator('button'))
 
 		await proceedBtn.click()
-		await browser.sleep(1000)
 	});
 
 	it("Should checkout", async function() {
+		
 		const email = await browser.findElement(webdriver.By.name('email'))
 		const name = await browser.findElement(webdriver.By.name('name'))
 		const address = await browser.findElement(webdriver.By.name('address'))
+
+		await browser.wait(webdriver.until.elementLocated(webdriver.By.id('checkoutBtn'), 1500))
 
 		const checkoutBtn = await browser.findElement(webdriver.By.id('checkoutBtn'))
 

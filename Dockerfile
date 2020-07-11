@@ -10,6 +10,6 @@ COPY ["package.json", "yarn.lock", "/usr/src/app/"]
 
 RUN yarn
 
-CMD yarn test
+CMD yarn start
 
 
