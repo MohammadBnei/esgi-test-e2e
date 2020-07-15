@@ -12,7 +12,7 @@ const chorme = require('selenium-webdriver/chrome');
 const firefox = require('selenium-webdriver/firefox');
 
 // Application Server
-const serverUri = "http://172.26.0.2:3000"
+const serverUri = "http://" + (process.env.IP_ADDR || "172.26.0.2") + ":3000"
 const appTitle = "Client shopper"
 
 const options = new chorme.Options()
@@ -117,6 +117,8 @@ for (const browser of [chromeBrowser, firefoxBrowser]) {
 			success = await success.getText()
 
 			assert.equal(success, "Payment Validated !")
+
+			await browser.sleep(5000)
 		});
 	});
 }
