@@ -3,7 +3,7 @@ version: '3.4'
 services:
     client:
         build: .
-        container_name: client
+        container_name: test-client
         environment: 
             - REACT_APP_MARCHAND_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYXJjaGFuZElkIjoiMSJ9.QNXpU-13PmKGN_3dBixiiKEayO-fiMN55XTVS81sfrw"
         ports:
@@ -30,9 +30,10 @@ services:
             - hub
         ports:
             - 5900:5900
-
+                
     firefox:
         image: selenium/node-firefox-debug
+        container_name: fire-debug
         environment: 
             - HUB_HOST=hub
         volumes: 

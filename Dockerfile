@@ -6,10 +6,10 @@ RUN apk add yarn
 
 WORKDIR /usr/src/app
 
-COPY ["package.json", "yarn.lock", "/usr/src/app/"]
+COPY ["package.json", "/usr/src/app/"]
 
 RUN yarn
 
-CMD yarn start
+CMD echo hostname -i >> IP_ADDR && yarn start
 
 
