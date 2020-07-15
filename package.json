@@ -30,7 +30,7 @@
     "server": "nodemon server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha test --no-timeout",
+    "test": "mocha test --timeout 5000",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
