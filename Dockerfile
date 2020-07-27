@@ -10,6 +10,6 @@ COPY ["package.json", "/usr/src/app/"]
 
 RUN yarn
 
-CMD export IP_ADDR=$(hostname -i) && yarn start
+CMD export IP_ADDR=$(hostname -i) && yarn test
 
 
